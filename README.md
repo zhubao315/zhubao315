@@ -1,2 +1,2 @@
 - 👋 Hi, I’m @zhubao315 https://twitter.com/zhubao315
-- 👀 I enjoy [running](https://zhubao315.github.io/running/) [reading](https://imminent-bus-47a.notion.site/60f6a4070dec463aae882e299ad892f9?v=a4acb9f7de5841a1966ae1b5a8c9b780&pvs=25) and listening to music.
+- 👀 I enjoy [running](https://zhubao315.github.io/running/) [reading](https://zhubao315.notion.site/60f6a4070dec463aae882e299ad892f9?v=a4acb9f7de5841a1966ae1b5a8c9b780&pvs=4) and listening to music.
