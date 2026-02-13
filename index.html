@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+<head>
+<meta charset='UTF-8'>
+<title>留言板</title>
+</head>
+<body>
+<h1>留言板</h1>
+<div id='messages'></div>
+<textarea id='newMsg' placeholder='写下你的留言…'></textarea>
+<button onclick='post()'>提交</button>
+<script>
+function post(){
+  var txt=document.getElementById('newMsg').value.trim();
+  if(!txt) return;
+  var msgs=document.getElementById('messages');
+  msgs.innerHTML+='<p>'+txt+'</p>';
+  document.getElementById('newMsg').value='';
+}
+</script>
+</body>
+</html>
