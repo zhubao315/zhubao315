@@ -7,10 +7,10 @@
 Four self-hosted dashboards fed by one pipeline: COROS watch → SQLite → GitHub Pages.
 No spreadsheets, no manual exports — every run, ride, hike and night of sleep lands in an open dataset.
 
-[![Running](https://img.shields.io/badge/Running-22%2C961%20km-e0ed5e?style=for-the-badge&labelColor=0b0d10)](https://zhubao315.github.io/running/)
-[![Cycling](https://img.shields.io/badge/Cycling-19%2C576%20km-fb923c?style=for-the-badge&labelColor=0b0d10)](https://zhubao315.github.io/cycling/)
-[![Hiking](https://img.shields.io/badge/Hiking-16%2C921%20m%20climb-34d399?style=for-the-badge&labelColor=0b0d10)](https://zhubao315.github.io/hiking/)
-[![Health](https://img.shields.io/badge/Health-1%2C024%20days-22d3ee?style=for-the-badge&labelColor=0b0d10)](https://zhubao315.github.io/health/)
+[![Running](https://img.shields.io/badge/Running-22%2C961%20km-e0ed5e?style=flat-square&labelColor=0b0d10)](https://zhubao315.github.io/running/)
+[![Cycling](https://img.shields.io/badge/Cycling-19%2C576%20km-fb923c?style=flat-square&labelColor=0b0d10)](https://zhubao315.github.io/cycling/)
+[![Hiking](https://img.shields.io/badge/Hiking-16%2C921%20m%20climb-34d399?style=flat-square&labelColor=0b0d10)](https://zhubao315.github.io/hiking/)
+[![Health](https://img.shields.io/badge/Health-1%2C024%20days-22d3ee?style=flat-square&labelColor=0b0d10)](https://zhubao315.github.io/health/)
 
 </div>
 
@@ -18,12 +18,12 @@ No spreadsheets, no manual exports — every run, ride, hike and night of sleep 
 
 ## The four sites
 
-| | Site | What's in it | Scale |
-| --- | --- | --- | --- |
-| 🏃 | **[Running](https://zhubao315.github.io/running/)** | GPS tracks, elevation, pace, 3D terrain | **1,851 runs · 22,961 km · 12 years** |
-| 🚴 | **[Cycling](https://zhubao315.github.io/cycling/)** | Routes, speed, climbing, year-over-year | **2,621 rides · 19,576 km · 37,859 m climb** |
-| 🥾 | **[Hiking](https://zhubao315.github.io/hiking/)** | Mountain routes with baked 3D scenes | **17 hikes · 281 km · 16,921 m climb** |
-| ❤️ | **[Health](https://zhubao315.github.io/health/)** | Sleep stages, HRV, resting HR, stress, load | **1,024 days · 11 metrics · daily since 2023** |
+| Site | What's in it | Scale |
+| --- | --- | --- |
+| **[Running](https://zhubao315.github.io/running/)** | GPS tracks, elevation, pace, 3D terrain | **1,851 runs · 22,961 km · 12 years** |
+| **[Cycling](https://zhubao315.github.io/cycling/)** | Routes, speed, climbing, year-over-year | **2,621 rides · 19,576 km · 37,859 m climb** |
+| **[Hiking](https://zhubao315.github.io/hiking/)** | Mountain routes with baked 3D scenes | **17 hikes · 281 km · 16,921 m climb** |
+| **[Health](https://zhubao315.github.io/health/)** | Sleep stages, HRV, resting HR, stress, load | **1,024 days · 11 metrics · daily since 2023** |
 
 Each site is a static page with no backend. The data is regenerated twice a day and committed to git, so history is versioned and every number is traceable back to a CSV row.
 
@@ -32,12 +32,13 @@ Each site is a static page with no backend. The data is regenerated twice a day 
 ```mermaid
 flowchart LR
   W[COROS watch] --> M[COROS MCP]
-  M --> P["Python sync<br/>retries · window ladder<br/>per-table watermarks"]
+  M --> P[Python sync]
   P --> D[(SQLite)]
   D --> J[JSON + CSV]
   J --> G[GitHub Pages]
-  D --> A[analysis + 78 unit tests]
 ```
+
+`Python sync` handles retries, a descending window ladder for server caps, per-table watermarks and no-downgrade upserts. The dashboard, the Markdown report and the quality audit all read the same SQLite file, so they can never disagree.
 
 ## Engineering notes
 
