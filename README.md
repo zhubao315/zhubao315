@@ -9,7 +9,7 @@ No spreadsheets, no manual exports — every run, ride, hike and night of sleep 
 
 [![Running](https://img.shields.io/badge/Running-24%2C545%20km-e0ed5e?style=flat-square&labelColor=0b0d10)](https://zhubao315.github.io/running/)
 [![Cycling](https://img.shields.io/badge/Cycling-35%2C246%20km-fb923c?style=flat-square&labelColor=0b0d10)](https://zhubao315.github.io/cycling/)
-[![Hiking](https://img.shields.io/badge/Hiking-16%2C921%20m%20climb-34d399?style=flat-square&labelColor=0b0d10)](https://zhubao315.github.io/hiking/)
+[![Hiking](https://img.shields.io/badge/Hiking-33%2C295%20m%20climb-34d399?style=flat-square&labelColor=0b0d10)](https://zhubao315.github.io/hiking/)
 [![Health](https://img.shields.io/badge/Health-1%2C024%20days-22d3ee?style=flat-square&labelColor=0b0d10)](https://zhubao315.github.io/health/)
 
 </div>
@@ -22,7 +22,7 @@ No spreadsheets, no manual exports — every run, ride, hike and night of sleep 
 | --- | --- | --- |
 | **[Running](https://zhubao315.github.io/running/)** | GPS tracks, elevation, pace, 3D terrain | **1,983 runs · 24,545 km · 13 years** |
 | **[Cycling](https://zhubao315.github.io/cycling/)** | Routes, speed, climbing, year-over-year | **5,072 rides · 35,246 km · 37,859 m climb** |
-| **[Hiking](https://zhubao315.github.io/hiking/)** | Mountain routes with baked 3D scenes | **1,166 hikes · 3,182 km · 16,921 m climb** |
+| **[Hiking](https://zhubao315.github.io/hiking/)** | Mountain routes with baked 3D scenes | **1,166 hikes · 3,182 km · 33,295 m climb** |
 | **[Health](https://zhubao315.github.io/health/)** | Sleep stages, HRV, resting HR, stress, load | **1,024 days · 11 metrics · daily since 2023** |
 
 Each site is a static page with no backend. The data is regenerated twice a day and committed to git, so history is versioned and every number is traceable back to a CSV row.
