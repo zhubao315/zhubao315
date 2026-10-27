@@ -22,7 +22,7 @@ No spreadsheets, no manual exports — every run, ride, hike and night of sleep 
 | --- | --- | --- |
 | **[Running](https://zhubao315.github.io/running/)** | GPS tracks, elevation, pace, 3D terrain | **1,983 runs · 24,545 km · 13 years** |
 | **[Cycling](https://zhubao315.github.io/cycling/)** | Routes, speed, climbing, year-over-year | **5,072 rides · 35,246 km · 37,859 m climb** |
-| **[Hiking](https://zhubao315.github.io/hiking/)** | Mountain routes with baked 3D scenes | **17 hikes · 281 km · 16,921 m climb** |
+| **[Hiking](https://zhubao315.github.io/hiking/)** | Mountain routes with baked 3D scenes | **1,166 hikes · 3,182 km · 16,921 m climb** |
 | **[Health](https://zhubao315.github.io/health/)** | Sleep stages, HRV, resting HR, stress, load | **1,024 days · 11 metrics · daily since 2023** |
 
 Each site is a static page with no backend. The data is regenerated twice a day and committed to git, so history is versioned and every number is traceable back to a CSV row.
