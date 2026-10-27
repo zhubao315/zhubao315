@@ -7,8 +7,8 @@
 Four self-hosted dashboards fed by one pipeline: COROS watch → SQLite → GitHub Pages.
 No spreadsheets, no manual exports — every run, ride, hike and night of sleep lands in an open dataset.
 
-[![Running](https://img.shields.io/badge/Running-22%2C961%20km-e0ed5e?style=flat-square&labelColor=0b0d10)](https://zhubao315.github.io/running/)
-[![Cycling](https://img.shields.io/badge/Cycling-19%2C576%20km-fb923c?style=flat-square&labelColor=0b0d10)](https://zhubao315.github.io/cycling/)
+[![Running](https://img.shields.io/badge/Running-24%2C545%20km-e0ed5e?style=flat-square&labelColor=0b0d10)](https://zhubao315.github.io/running/)
+[![Cycling](https://img.shields.io/badge/Cycling-35%2C246%20km-fb923c?style=flat-square&labelColor=0b0d10)](https://zhubao315.github.io/cycling/)
 [![Hiking](https://img.shields.io/badge/Hiking-16%2C921%20m%20climb-34d399?style=flat-square&labelColor=0b0d10)](https://zhubao315.github.io/hiking/)
 [![Health](https://img.shields.io/badge/Health-1%2C024%20days-22d3ee?style=flat-square&labelColor=0b0d10)](https://zhubao315.github.io/health/)
 
@@ -20,8 +20,8 @@ No spreadsheets, no manual exports — every run, ride, hike and night of sleep 
 
 | Site | What's in it | Scale |
 | --- | --- | --- |
-| **[Running](https://zhubao315.github.io/running/)** | GPS tracks, elevation, pace, 3D terrain | **1,851 runs · 22,961 km · 12 years** |
-| **[Cycling](https://zhubao315.github.io/cycling/)** | Routes, speed, climbing, year-over-year | **2,621 rides · 19,576 km · 37,859 m climb** |
+| **[Running](https://zhubao315.github.io/running/)** | GPS tracks, elevation, pace, 3D terrain | **1,983 runs · 24,545 km · 13 years** |
+| **[Cycling](https://zhubao315.github.io/cycling/)** | Routes, speed, climbing, year-over-year | **5,072 rides · 35,246 km · 37,859 m climb** |
 | **[Hiking](https://zhubao315.github.io/hiking/)** | Mountain routes with baked 3D scenes | **17 hikes · 281 km · 16,921 m climb** |
 | **[Health](https://zhubao315.github.io/health/)** | Sleep stages, HRV, resting HR, stress, load | **1,024 days · 11 metrics · daily since 2023** |
 
