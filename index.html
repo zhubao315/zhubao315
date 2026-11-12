@@ -1,22 +1,395 @@
-<!DOCTYPE html>
-<html lang='zh-CN'>
-<head>
-<meta charset='UTF-8'>
-<title>留言板</title>
-</head>
-<body>
-<h1>留言板</h1>
-<div id='messages'></div>
-<textarea id='newMsg' placeholder='写下你的留言…'></textarea>
-<button onclick='post()'>提交</button>
-<script>
-function post(){
-  var txt=document.getElementById('newMsg').value.trim();
-  if(!txt) return;
-  var msgs=document.getElementById('messages');
-  msgs.innerHTML+='<p>'+txt+'</p>';
-  document.getElementById('newMsg').value='';
-}
-</script>
-</body>
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>朱宝 ZHUBAO · 个人作品集</title>
+    <meta
+      name="description"
+      content="朱宝 ZHUBAO 的个人数字作品集：AI 与 Agent 工程、数字产品、知识工程、投资研究，以及由长期运动与健康数据构成的量化生活实践。"
+    />
+    <link rel="canonical" href="https://zhubao315.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="朱宝 ZHUBAO · 个人作品集" />
+    <meta
+      property="og:description"
+      content="Build systems. Engineer knowledge. Explore life. 把想法变成系统，把知识沉淀为资产，把生活记录成可持续的实践。"
+    />
+    <meta
+      property="og:url"
+      content="https://zhubao315.github.io/zhubao315/"
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/zhubao315/zhubao315/main/assets/profile-banner.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      :root {
+        --paper: #f7f3ea;
+        --navy: #0b1d33;
+        --navy-2: #07111e;
+        --muted: #5a697d;
+        --muted-light: #94a3b8;
+        --gold: #fbbf24;
+        --sky: #38bdf8;
+        --line: rgba(247, 243, 234, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        min-height: 100vh;
+        background: var(--navy-2);
+        color: var(--paper);
+        font-family: 'Inter', 'Noto Sans CJK SC', 'Source Han Sans SC', 'PingFang SC',
+          'Hiragino Sans GB', 'Microsoft YaHei', system-ui, -apple-system, sans-serif;
+        line-height: 1.7;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .wrap {
+        width: min(920px, 100% - 48px);
+        margin: 0 auto;
+      }
+
+      header {
+        padding: 44px 0 0;
+      }
+
+      .banner {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--line);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 22px 0 0;
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        font-size: 0.68rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted-light);
+      }
+
+      .brand .mark {
+        display: grid;
+        place-items: center;
+        width: 26px;
+        height: 26px;
+        background: var(--paper);
+        color: var(--navy);
+      }
+
+      .brand .mark svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      main {
+        flex: 1;
+        padding: 40px 0 8px;
+      }
+
+      .eyebrow {
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        font-size: 0.66rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--sky);
+      }
+
+      h1 {
+        margin: 16px 0 0;
+        font-size: clamp(2.1rem, 6vw, 3.4rem);
+        font-weight: 700;
+        line-height: 1.06;
+        letter-spacing: -0.03em;
+      }
+
+      h1 em {
+        font-style: normal;
+        color: var(--gold);
+      }
+
+      .lede {
+        margin-top: 18px;
+        max-width: 60ch;
+        color: var(--muted-light);
+        font-size: 0.95rem;
+      }
+
+      .lede strong {
+        color: var(--paper);
+        font-weight: 600;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 13px 22px;
+        border: 1px solid var(--line);
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--paper);
+        background: transparent;
+        transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      }
+
+      .btn:hover,
+      .btn:focus-visible {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+
+      .btn--solid {
+        background: var(--paper);
+        border-color: var(--paper);
+        color: var(--navy);
+        font-weight: 600;
+      }
+
+      .btn--solid:hover,
+      .btn--solid:focus-visible {
+        background: var(--gold);
+        border-color: var(--gold);
+        color: var(--navy);
+      }
+
+      .btn .arrow {
+        transition: transform 0.2s ease;
+      }
+
+      .btn:hover .arrow,
+      .btn:focus-visible .arrow {
+        transform: translateX(3px);
+      }
+
+      .facts {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1px;
+        margin-top: 44px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+
+      .fact {
+        padding: 20px 18px;
+        background: var(--navy);
+      }
+
+      .fact strong {
+        display: block;
+        font-size: 1.7rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .fact span {
+        display: block;
+        margin-top: 6px;
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        font-size: 0.6rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted-light);
+      }
+
+      .fact em {
+        display: block;
+        margin-top: 8px;
+        font-style: normal;
+        font-size: 0.78rem;
+        color: var(--muted-light);
+      }
+
+      .directions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 34px;
+      }
+
+      .direction {
+        padding: 18px 20px;
+        border: 1px solid var(--line);
+      }
+
+      .direction b {
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        font-size: 0.68rem;
+        letter-spacing: 0.14em;
+        color: var(--gold);
+      }
+
+      .direction h2 {
+        margin-top: 6px;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .direction p {
+        margin-top: 8px;
+        font-size: 0.84rem;
+        color: var(--muted-light);
+      }
+
+      footer {
+        margin-top: 46px;
+        padding: 24px 0 40px;
+        border-top: 1px solid var(--line);
+        font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted-light);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        justify-content: space-between;
+      }
+
+      footer a {
+        color: var(--muted-light);
+        text-decoration: none;
+      }
+
+      footer a:hover,
+      footer a:focus-visible {
+        color: var(--gold);
+      }
+
+      @media (max-width: 720px) {
+        .facts {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .directions {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <a href="https://zhubao315.github.io">
+          <img
+            class="banner"
+            src="./assets/profile-banner.png"
+            alt="ZHUBAO — Build systems. Engineer knowledge. Explore life."
+            width="2400"
+            height="800"
+          />
+        </a>
+        <div class="brand">
+          <span class="mark" aria-hidden="true">
+            <svg viewBox="0 0 34 34">
+              <path d="M6 8h22l-7.2 9H28L10 29l5.2-11H6l7.4-10Z" fill="currentColor" />
+              <circle cx="26.8" cy="7.2" r="2.4" fill="#FBBF24" />
+            </svg>
+          </span>
+          <span>ZHUBAO / PERSONAL DIGITAL PORTFOLIO · BEIJING · UTC+8</span>
+        </div>
+      </header>
+
+      <main>
+        <p class="eyebrow">AI Systems · Digital Products · Knowledge · Measured Life</p>
+        <h1>把方法做成系统，<br />把知识沉淀为<em>资产</em>，<br />把生活记录成实践。</h1>
+        <p class="lede">
+          我做 AI 与 Agent 工程、数字产品、知识工程与投资研究，也长期记录自己的健康与运动。
+          <strong>作品集里有 18 个案例、6 个旗舰项目，全部标注来源类型与最后核验日期。</strong>
+        </p>
+
+        <div class="actions">
+          <a class="btn btn--solid" href="https://zhubao315.github.io">
+            进入作品集 <span class="arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="btn" href="https://zhubao315.github.io/work/">全部项目</a>
+          <a class="btn" href="https://zhubao315.github.io/about/">关于</a>
+          <a class="btn" href="https://github.com/zhubao315">GitHub</a>
+        </div>
+
+        <section class="facts" aria-label="公开记录">
+          <div class="fact">
+            <strong>61</strong>
+            <span>Public Repos</span>
+            <em>24 个非 Fork，37 个 Fork / 上游研究</em>
+          </div>
+          <div class="fact">
+            <strong>8,157</strong>
+            <span>Activities</span>
+            <em>跑步、骑行与徒步记录合计（派生值）</em>
+          </div>
+          <div class="fact">
+            <strong>72,533</strong>
+            <span>Km</span>
+            <em>同一组公开快照相加得到</em>
+          </div>
+          <div class="fact">
+            <strong>18</strong>
+            <span>Case Studies</span>
+            <em>6 个旗舰项目，全部标注来源与核验日期</em>
+          </div>
+        </section>
+
+        <section class="directions" aria-label="四个方向">
+          <div class="direction">
+            <b>01 / BUILD</b>
+            <h2>构建系统</h2>
+            <p>AI、Agent Skills、软件架构与云原生基础设施。把方法做成可运行、可治理的系统。</p>
+          </div>
+          <div class="direction">
+            <b>02 / THINK</b>
+            <h2>探索认知</h2>
+            <p>知识工程、投资研究与持续学习。让信息经过结构、证据与纪律，变成可调用的资产。</p>
+          </div>
+          <div class="direction">
+            <b>03 / MEASURE</b>
+            <h2>量化生活</h2>
+            <p>健康、跑步、骑行与徒步。用十多年的个人数据，记录身体与时间的关系。</p>
+          </div>
+          <div class="direction">
+            <b>04 / CREATE</b>
+            <h2>创造作品</h2>
+            <p>数字产品、人格探索与 AI 动画。把抽象的想法变成可以体验、观看和分享的作品。</p>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <span>数据快照 2026-11-11 · 实时状态以各站点页面为准</span>
+        <span>
+          <a href="https://zhubao315.github.io/think/">思考</a> ·
+          <a href="https://zhubao315.github.io/explore/">探索</a> ·
+          <a href="https://x.com/zhubao315">X</a>
+        </span>
+      </footer>
+    </div>
+  </body>
 </html>
