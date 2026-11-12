@@ -1,69 +1,100 @@
 <div align="center">
 
-# zhubao315
+<a href="https://zhubao315.github.io">
+  <img src="./assets/profile-banner.png" alt="ZHUBAO — Build systems. Engineer knowledge. Explore life." width="100%">
+</a>
 
-**I turn everyday training into public, queryable data.**
-
-Four self-hosted dashboards fed by one pipeline: COROS watch → SQLite → GitHub Pages.
-No spreadsheets, no manual exports — every run, ride, hike and night of sleep lands in an open dataset.
-
-[![Running](https://img.shields.io/badge/Running-24%2C545%20km-e0ed5e?style=flat-square&labelColor=0b0d10)](https://zhubao315.github.io/running/)
-[![Cycling](https://img.shields.io/badge/Cycling-35%2C246%20km-fb923c?style=flat-square&labelColor=0b0d10)](https://zhubao315.github.io/cycling/)
-[![Hiking](https://img.shields.io/badge/Hiking-33%2C295%20m%20climb-34d399?style=flat-square&labelColor=0b0d10)](https://zhubao315.github.io/hiking/)
-[![Health](https://img.shields.io/badge/Health-1%2C024%20days-22d3ee?style=flat-square&labelColor=0b0d10)](https://zhubao315.github.io/health/)
+<p>
+  <a href="https://zhubao315.github.io/work/"><strong>作品集</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://zhubao315.github.io/about/">关于</a>
+  &nbsp;·&nbsp;
+  <a href="https://zhubao315.github.io/think/">思考</a>
+  &nbsp;·&nbsp;
+  <a href="https://x.com/zhubao315">X</a>
+</p>
 
 </div>
+
+## 把方法做成系统，把生活记录成数据
+
+我做 AI 与 Agent 工程、数字产品、知识工程与投资研究，也长期记录自己的健康与运动。
+
+作品集里没有“领先”“颠覆”这类形容词，只有公开代码、可访问的站点、可复核的数字，以及每个项目主动写明的边界。18 个案例、6 个旗舰项目，全部标注来源类型与最后核验日期。
+
+**[进入作品集 →](https://zhubao315.github.io)**
 
 ---
 
-## The four sites
+## 四个方向
 
-| Site | What's in it | Scale |
-| --- | --- | --- |
-| **[Running](https://zhubao315.github.io/running/)** | GPS tracks, elevation, pace, 3D terrain | **1,983 runs · 24,545 km · 13 years** |
-| **[Cycling](https://zhubao315.github.io/cycling/)** | Routes, speed, climbing, year-over-year | **5,072 rides · 35,246 km · 37,859 m climb** |
-| **[Hiking](https://zhubao315.github.io/hiking/)** | Mountain routes with baked 3D scenes | **1,166 hikes · 3,182 km · 33,295 m climb** |
-| **[Health](https://zhubao315.github.io/health/)** | Sleep stages, HRV, resting HR, stress, load | **1,024 days · 11 metrics · daily since 2023** |
+| # | 方向 | 在做什么 |
+|:--:|---|---|
+| 01 | **BUILD** · 构建系统 | AI、Agent Skills、软件架构与云原生基础设施。把方法做成可运行、可治理的系统。 |
+| 02 | **THINK** · 探索认知 | 知识工程、投资研究与持续学习。让信息经过结构、证据与纪律，变成可调用的资产。 |
+| 03 | **MEASURE** · 量化生活 | 健康、跑步、骑行与徒步。用十多年的个人数据，记录身体与时间的关系。 |
+| 04 | **CREATE** · 创造作品 | 数字产品、人格探索与 AI 动画。把抽象的想法变成可以体验、观看和分享的作品。 |
 
-Each site is a static page with no backend. The data is regenerated twice a day and committed to git, so history is versioned and every number is traceable back to a CSV row.
+## 六个旗舰项目
 
-## How it works
+**01 · [MBTI64](https://zhubao315.github.io/work/mbti64/)** — 64 型人格稀有度测评  
+120 道中文情景题 → 六维计分 → 64 型人格与 7 档稀有度。答案只在浏览器本地计算。  
+`120 道题` `64 型` `254 项测试` — [在线测评](https://zhubao315.github.io/mbti64/) · [源码](https://github.com/zhubao315/mbti64)
 
-```mermaid
-flowchart LR
-  W[COROS watch] --> M[COROS MCP]
-  M --> P[Python sync]
-  P --> D[(SQLite)]
-  D --> J[JSON + CSV]
-  J --> G[GitHub Pages]
-```
+**02 · [uSkill](https://zhubao315.github.io/work/uskill/)** — Agent 标准化技能底座  
+SOP → 标准化 Skill → 可调用执行器，一条可复用的能力工程链路。  
+`v1.1` `4 项能力属性` `Schema / CLI / Python API / Executor` — [源码](https://github.com/zhubao315/uSkill)
 
-`Python sync` handles retries, a descending window ladder for server caps, per-table watermarks and no-downgrade upserts. The dashboard, the Markdown report and the quality audit all read the same SQLite file, so they can never disagree.
+**03 · [Knowledge Base Engineering](https://zhubao315.github.io/work/knowledge-base-engineering/)** — 知识库工程  
+只读优先的 AI Skill：诊断、准入、治理、度量与可回滚的运营。物理删除不在 AI 权限集合。  
+`v1.2.0` `8 个治理模块` `25 项回归测试` — [源码](https://github.com/zhubao315/knowledge-base-engineering-skill)
 
-## Engineering notes
+**04 · [Investment Discipline](https://zhubao315.github.io/work/investment-discipline/)** — 投资的纪律  
+不预测市场，只把决策过程变成可执行清单。不荐股、不承诺收益。  
+`8 种任务模式` `45 项结构校验` `63 项单元测试` — [源码](https://github.com/zhubao315/investment-discipline)
 
-The interesting part isn't the charts — it's keeping a personal dataset honest over time.
+**05 · [Quantified Life](https://zhubao315.github.io/work/quantified-life/)** — 量化生活  
+COROS → SQLite → 静态站点。健康、跑步、骑行与徒步四个独立面板。  
+`1,039 天健康数据` `2,037 次跑步 / 24,548 km` `5,776 次骑行 / 45,291 km` `344 次徒步 / 2,694 km / 53,014 m 爬升`  
+[健康](https://zhubao315.github.io/health/) · [跑步](https://zhubao315.github.io/running/) · [骑行](https://zhubao315.github.io/cycling/) · [徒步](https://zhubao315.github.io/hiking/)  
+<sub>四站合计 8,157 次运动 / 72,533 km，为由公开快照相加的派生值。</sub>
 
-- **Missing ≠ zero.** A missing sleep stage stays `null` all the way to the chart. Pseudo-zeros are detected and reported, never silently filled.
-- **Idempotent, lossless writes.** Re-fetching a day never overwrites stored values with `NULL` (`COALESCE(excluded, stored)`), so the archive can only grow.
-- **Self-healing sync.** Each table tracks its own watermark; a failed fetch keeps the old watermark, so the next run re-reads the gap instead of skipping it.
-- **Server caps are handled, not assumed.** "Last N days" APIs are probed with a descending window ladder; transient errors skip a window instead of killing the run.
-- **Published audit.** `data_quality.json` reports missing rates, date gaps, duplicate keys and robust-z anomalies on every build.
-- **Same definitions everywhere.** Rolling stats, baselines and correlations live in one module shared by the dashboard, the CLI and the Markdown report.
+**06 · [Perfect Me](https://zhubao315.github.io/work/perfectme/)** — 满分的我  
+一部关于“被喜欢”与“做自己”的原创 2D 微动漫。3 名原创角色，从剧本、分镜到成片的完整制作链路；AI 辅助视觉与音频，制作过程与复现脚本在仓库公开。  
+`2′31″` `3 个角色` `1 条完整制作管线` — [观看](https://zhubao315.github.io/perfectme/) · [源码](https://github.com/zhubao315/perfectme)
 
-## Other things I build
+## 工作方式
 
-| Project | What it is |
-| --- | --- |
-| **[investment-discipline](https://github.com/zhubao315/investment-discipline)** | Zero-dependency agent skill for investment research: collect → verify → analyze → discipline checks |
-| **[knowledge-base-engineering-skill](https://github.com/zhubao315/knowledge-base-engineering-skill)** | Portable knowledge-base engineering skill for AI agents, read-only-first by design |
-| **[perfectme](https://github.com/zhubao315/perfectme)** | An original 2D micro-animation pipeline (Qwen-Image × ACE-Step × Qwen) |
+1. **先定义问题，再选择工具。** 先确认边界、证据和验收方式，再决定要不要引入新的框架。
+2. **可验证，比看起来聪明更重要。** 让结果能被复跑、被审计、被回滚；对数据缺失、证据不足和失败路径保持诚实。
+3. **把经验沉淀成系统。** 一次性的 Prompt 是消耗品，可复用、可调用、可迭代的 Skill 才是资产。
+4. **长期记录，持续复利。** 身体、知识和作品都需要时间尺度。可信的长期数据，比任何单点高光更有价值。
 
-Mostly Python, TypeScript and a lot of YAML. I care about data that stays correct after the first month, and interfaces that stay readable after the tenth chart.
+## 写作
 
-<div align="center">
+两部书稿在作品集中以**手稿**状态呈现，不是已出版图书：
 
-[![X](https://img.shields.io/badge/-@zhubao315-0b0d10?style=flat-square&logo=x&logoColor=white)](https://x.com/zhubao315)
-[![GitHub](https://img.shields.io/badge/-Follow-0b0d10?style=flat-square&logo=github&logoColor=white)](https://github.com/zhubao315)
+- **《知识库工程学》** — 从收藏到可治理的知识系统。13 章、5 个附录，配套 Skill v1.2.0。
+- **《投资的纪律》** — 从情绪交易到纪律复利。8 种任务模式、45 项检查、63 项测试，配套 Skill 已开源。
 
-</div>
+没有可核实的 ISBN、出版社或发行信息，因此不称为已出版。阅读笔记与方法记录在 [THINK](https://zhubao315.github.io/think/)。
+
+## 公开记录
+
+`61` 个公开仓库 · `24` 个非 Fork · `37` 个 Fork / 上游研究
+
+Fork 与上游项目只作为研究样本，不计入原创作品。每个案例页都标注 **原创 / 二次开发 / 上游研究**，以及最后核验日期。
+
+<sub>数据快照 2026-11-11 · 站点与仓库的实时状态以各自页面为准</sub>
+
+---
+
+<p align="center">
+  <a href="https://zhubao315.github.io">作品集</a>
+  &nbsp;·&nbsp;
+  <a href="https://zhubao315.github.io/work/">全部项目</a>
+  &nbsp;·&nbsp;
+  <a href="https://zhubao315.github.io/about/">关于</a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/zhubao315?tab=repositories">GitHub 仓库</a>
+</p>
