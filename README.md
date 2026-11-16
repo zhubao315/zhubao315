@@ -11,6 +11,13 @@
   &nbsp;·&nbsp;
   <a href="https://zhubao315.github.io/think/">思考</a>
   &nbsp;·&nbsp;
+  <a href="https://zhubao315.github.io/brand/"><strong>品牌 CIS</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://zhubao315.github.io/health/">健康</a>
+  <a href="https://zhubao315.github.io/running/">跑步</a>
+  <a href="https://zhubao315.github.io/cycling/">骑行</a>
+  <a href="https://zhubao315.github.io/hiking/">徒步</a>
+  &nbsp;·&nbsp;
   <a href="https://x.com/zhubao315">X</a>
 </p>
 
@@ -25,6 +32,11 @@
 **[进入作品集 →](https://zhubao315.github.io)**
 
 ---
+
+## 品牌系统
+
+- **ZHUBAO CIS 1.0 · Midnight Signal**：个人品牌全量识别系统（CI / VI / SI），已发布在 [zhubao315.github.io/brand/](https://zhubao315.github.io/brand/)。Logo 权威版为品牌板**严格切图**（零重绘）；[智能体提示词](https://zhubao315.github.io/brand/AGENT-PROMPT.md) 可直接调用。
+- **ACTIVE 2.0 · 运动与健康四站**：健康 / 跑步 / 骑行 / 徒步共用统一 Header、导航、Token 与页脚；规范源在 [active-watch](https://github.com/zhubao315/active-watch)。顶部只保留四站导航与主题切换，GitHub 入口仅在页脚。
 
 ## 四个方向
 
@@ -95,6 +107,10 @@ Fork 与上游项目只作为研究样本，不计入原创作品。每个案例
   <a href="https://zhubao315.github.io/work/">全部项目</a>
   &nbsp;·&nbsp;
   <a href="https://zhubao315.github.io/about/">关于</a>
+  &nbsp;·&nbsp;
+  <a href="https://zhubao315.github.io/brand/">品牌 CIS</a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/zhubao315/active-watch">ACTIVE 2.0</a>
   &nbsp;·&nbsp;
   <a href="https://github.com/zhubao315?tab=repositories">GitHub 仓库</a>
 </p>
