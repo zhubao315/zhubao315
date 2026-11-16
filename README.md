@@ -1,7 +1,7 @@
 <div align="center">
 
 <a href="https://zhubao315.github.io">
-  <img src="./assets/profile-banner.png" alt="ZHUBAO — Build systems. Engineer knowledge. Explore life." width="100%">
+  <img src="./assets/profile-banner.png" alt="ZHUBAO — Build Systems. Engineer Knowledge. Measure Life. Create Things." width="100%">
 </a>
 
 <p>
