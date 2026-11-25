@@ -1,0 +1,71 @@
+name: Profile Guard
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: profile-guard
+  cancel-in-progress: true
+
+jobs:
+  guard:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: README must exist and be non-trivial
+        run: |
+          test -s README.md
+          test "$(wc -c < README.md)" -gt 500
+
+      - name: Check Markdown links are well-formed
+        run: |
+          python3 - <<'PY'
+          import re, pathlib, sys
+          text = pathlib.Path('README.md').read_text(encoding='utf8')
+          links = re.findall(r'\[[^\]]*\]\(([^)]+)\)', text)
+          bad = []
+          for link in links:
+              target = link.split()[0].strip('<>"')
+              if not target or target.startswith(('#','http://','https://','mailto:')):
+                  continue
+              if any(ch in target for ch in ' <>"'):
+                  bad.append(link)
+          if bad:
+              print('Malformed links:', bad[:10]); sys.exit(1)
+          print(f'Checked {len(links)} Markdown links')
+          PY
+
+      - name: Badge URLs must use HTTPS
+        run: |
+          python3 - <<'PY'
+          import re, pathlib, sys
+          text = pathlib.Path('README.md').read_text(encoding='utf8')
+          imgs = re.findall(r'!\[[^\]]*\]\(([^)]+)\)', text)
+          bad = [u for u in imgs if u.strip().startswith('http://')]
+          if bad:
+              print('Insecure badge URLs:', bad[:10]); sys.exit(1)
+          print(f'Checked {len(imgs)} images/badges')
+          PY
+
+      - name: index.html must reference the banner asset correctly
+        run: |
+          grep -q 'profile-banner.png' index.html
+          test -s assets/profile-banner.png
+
+      - name: Banner generator must compile
+        run: python3 -m py_compile tools/make_banner.py
